@@ -10,6 +10,7 @@ namespace CalculatorApp.Test
         {
         }
 
+        [Test]
         [TestCase("")]
         public void ShouldAddEmptyStringResultZero(string numbers)
         {
@@ -23,6 +24,7 @@ namespace CalculatorApp.Test
             Assert.That(result, Is.EqualTo(0));   
         }
 
+        [Test]
         [TestCase("1")]
         public void ShouldAddSingleNumber(string numbers)
         {
@@ -36,6 +38,7 @@ namespace CalculatorApp.Test
             Assert.That(result, Is.EqualTo(1));
         }
 
+        [Test]
         [TestCase("1,2")]
         public void ShouldAddTwoNumbers(string numbers)
         {
@@ -49,6 +52,7 @@ namespace CalculatorApp.Test
             Assert.That(result, Is.EqualTo(3));
         }
 
+        [Test]
         [TestCase(3, "1,2")]
         [TestCase(6, "1,2,3")]
         [TestCase(12, "1,2,4,5")] 
@@ -64,6 +68,7 @@ namespace CalculatorApp.Test
             Assert.That(resultAdd, Is.EqualTo(result));
         }
 
+        [Test]
         [TestCase(13, "1\n1,2,4,5")]
         public void ShouldAddManyNumbersWithNewLine(int result, string numbers)
         {
@@ -77,6 +82,7 @@ namespace CalculatorApp.Test
             Assert.That(resultAdd, Is.EqualTo(result));
         }
 
+        [Test]
         [TestCase(1, "1,\n")]
         public void ShouldAddManyNumbersWithNewLineTwo(int result, string numbers)
         {
@@ -90,6 +96,7 @@ namespace CalculatorApp.Test
             Assert.That(resultAdd, Is.EqualTo(result));
         }
 
+        [Test]
         [TestCase(3, "//;\n1;2")]
         public void ShouldAddManyNumbersWithDelimeter(int result, string numbers)
         {
@@ -103,6 +110,7 @@ namespace CalculatorApp.Test
             Assert.That(resultAdd, Is.EqualTo(result));
         }
 
+        [Test]
         [TestCase("//;\n1;-2")]
         [TestCase("//;\n1;2;-2;1")]
         [TestCase("//;\n1;2;-2;-1")]
@@ -115,6 +123,7 @@ namespace CalculatorApp.Test
             Assert.Throws<ArgumentException>(() => stringCalculator.Add(numbers));
         }
 
+        [Test]
         [TestCase(3, "//;\n1;2;1001")]
         public void ShouldAddAvoidOneThousand(int result, string numbers)
         {
@@ -128,7 +137,7 @@ namespace CalculatorApp.Test
             Assert.That(resultAdd, Is.EqualTo(result));
         }
 
-        //
+        [Test]
         [TestCase(6, "//[***]\n1***2***3")]
         public void ShouldAddNumbersUnknownDelimeter(int result, string numbers)
         {
